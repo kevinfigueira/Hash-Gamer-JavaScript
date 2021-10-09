@@ -1,0 +1,2 @@
+# Hash-Gamer-JavaScript
+ 
