@@ -1,0 +1,132 @@
+/*=========================GERAL========================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #202124;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*==========================SCORES=======================*/
+.scores{
+    width: 18rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.score-boardX, .score-boardO{
+    border: 1px solid rgba(141, 140, 140, 0.7);
+    border-bottom: none;
+    box-shadow: 1px 1px 3px rgb(26, 25, 25);
+    width: 8.6rem;
+    height: 1.9rem;
+    padding: 7px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s ease-out;
+}
+.x, .o, .scoreX, .scoreO{
+    font-size: 1.4rem;
+    color: rgba(141, 140, 140, 0.7);
+    text-shadow: 1px 1px 5px #202124;
+}
+.scoreX, .scoreO{
+    color: #fff;
+}
+/*============================NEXT-PLAYER========================*/
+.player {
+    width: 5.2rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.98rem;
+    color: #819698;
+    margin-bottom: 10px;
+}
+
+.player-title  {
+    color: #819698;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+.playerNext{
+    color: #FFF;
+    font-weight: 600;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+/*==============================AREA==========================*/
+.area{
+    width: 19rem;
+    background-color: #14BDAC;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    box-shadow: 2px 2px 5px rgb(26, 25, 25);
+}
+
+.area-container{
+    width: 16.875rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 20px;
+}
+.area-container .item {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+    font-weight: 500;
+    color: #FFF;
+    cursor: pointer;
+}
+.item.t {
+    border-top: 8px solid #0DA192;
+}
+.item.l {
+    border-left: 8px solid #0DA192;
+}
+.item.r {
+    border-right: 8px solid #0DA192;
+}
+.item.b {
+    border-bottom: 8px solid #0DA192;
+}
+/*==============================WINNER============================*/
+.winner{
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.winner-title, .winner-player{
+    font-size: 1.5rem;
+    color: #819698;
+}
+.winner-player{
+    margin-left: 1.5rem;
+    color: #fff;
+}
+/*============================BUTTON RESET==========================*/
+.reset {
+    width: 6rem;
+    border: 1px solid rgb(26, 25, 25);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #0DA192;
+    padding: 5px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.reset:hover{
+    border: 1px solid #000;
+}
