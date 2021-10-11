@@ -21,6 +21,7 @@ body {
     margin-bottom: 1rem;
 }
 .score-boardX, .score-boardO{
+    position: relative;
     border: 1px solid rgba(141, 140, 140, 0.7);
     border-bottom: none;
     box-shadow: 1px 1px 3px rgb(26, 25, 25);
@@ -31,7 +32,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: 0.5s ease-out;
+    transition: border 0.5s ease;
 }
 .x, .o, .scoreX, .scoreO{
     font-size: 1.4rem;
@@ -43,18 +44,17 @@ body {
 }
 /*============================NEXT-PLAYER========================*/
 .player {
-    width: 5.2rem;
+    width: 6rem;
     display: flex;
     justify-content: space-between;
-    font-size: 0.98rem;
+    font-size: 1rem;
     color: #819698;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 10px;
 }
-
-.player-title  {
+.player-title {
     color: #819698;
-    margin-bottom: 10px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 .playerNext{
     color: #FFF;
@@ -117,16 +117,15 @@ body {
 }
 /*============================BUTTON RESET==========================*/
 .reset {
-    width: 6rem;
+    width: 9rem;
+    height: 2.5rem;
     border: 1px solid rgb(26, 25, 25);
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.2);
-    color: #0DA192;
+    color: #00f5dc;
     padding: 5px;
     margin-top: 20px;
     text-transform: uppercase;
     cursor: pointer;
-}
-.reset:hover{
-    border: 1px solid #000;
+    transition: all 1s ease;
 }

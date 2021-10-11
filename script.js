@@ -7,6 +7,8 @@ let square = {
 let player = '';
 let warning = '';
 let playing = false;
+let totalX = '';
+let totalO = '';
 
 reset();
 
@@ -25,16 +27,16 @@ function itemClick(event){
     let item = event.target.getAttribute('data-item');
     if(playing && square[item] === ''){
         square[item] = player;
+
         renderSquare();
         togglePLayer(); // Função para alternar o jogador
     }
-
+    
 }
 
 //FUNÇÃO RESETAR
 function reset(){
     warning = '';
-    finished = '';
 
     let random = Math.floor(Math.random() * 2);
     player = (random === 0) ? 'x' : 'o';
@@ -43,7 +45,7 @@ function reset(){
         square[i] = '';
     }
 
-    playing = true
+    playing = true;
 
     renderSquare();// Reseta o tabuleiro
     renderInfo();//Mostra a vez do jogador e reseta o vencedor
@@ -54,6 +56,11 @@ function renderSquare(){
         let item = document.querySelector(`div[data-item=${i}]`);
         if(square[i] !== ''){
             item.innerHTML = square[i];
+            if(item.textContent === 'x'){
+                item.style.color = 'grey';
+            }else if(item.textContent === 'o'){
+                item.style.color = 'white';
+            }
         }else{
             item.innerHTML = '';
         }
@@ -66,28 +73,47 @@ function renderSquare(){
 function renderInfo(){
     document.querySelector('.playerNext').innerHTML = player;
     document.querySelector('.winner-player').innerHTML = warning;
-    let scoreX = document.querySelector('.score-boardX');
-    let scoreO = document.querySelector('.score-boardO');
+    let boardX = document.querySelector('.score-boardX');
+    let boardO = document.querySelector('.score-boardO');
     let x = document.querySelector('.x');
     let o = document.querySelector('.o');
+    let scoreX = document.querySelector('.scoreX');
+    let scoreO = document.querySelector('.scoreO');
 
+    //INDICANDO A VEZ DO JOGADOR PELA A BORDA AZUL
     if(player === 'x'){
-        scoreX.style.borderBottom = '2px solid Cyan';
-        scoreO.style.borderBottom = '';
+        boardX.style.borderBottom = '2px solid Cyan';
+        boardO.style.borderBottom = '';
         x.style.color = 'white';
         o.style.color = '';
     }else{
-        scoreX.style.borderBottom = '';
-        scoreO.style.borderBottom = '2px solid Cyan';
+        boardX.style.borderBottom = '';
+        boardO.style.borderBottom = '2px solid Cyan';
         o.style.color = 'white';
         x.style.color = '';
     }
+    //PONTUAÇÃO
+    if(warning === 'X'){
+        totalX++;
+        scoreX.innerHTML = totalX;
+
+    }else if(warning === 'O'){
+        totalO++;
+        scoreO.innerHTML = totalO;
+    }
+    
+    buttonDisable();//HABILITAR/DESABILITAR O BUTTON
 }
 
 //FUNÇÃO PARA ALTERNAR O JOGADOR
 function togglePLayer(){
-    player = (player === 'x') ? 'o' : 'x';
-     renderInfo();
+    if(player === 'x'){
+        player = 'o';
+    }else{
+        player = 'x';
+    }
+
+    renderInfo();
 }
 
 //FUNÇÃO PARA VERIFICAR QUEM GANHOU OU EMPATOU
@@ -141,4 +167,21 @@ function checkDraw(){
     }
 
     return true;
+}
+
+//FUNÇÃO P/ DESAABILITAR O BUTTON ENQUANTO O JOGO TIVER ROLANDO E HABILITAR O BUTTON QUNADO FINALIZAR O JOGO
+function buttonDisable(){
+    let winner = document.querySelector('.winner-player').textContent;
+    let button = document.querySelector('.reset');
+
+    if(winner === ''){
+        button.disabled = true;
+        button.style.color = 'grey';
+        button.style.border = 'none';
+
+    }else{
+        button.disabled = false;
+        button.style.color = 'Cyan';
+        button.style.border = '1px solid white';
+    }
 }
